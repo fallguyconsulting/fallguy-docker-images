@@ -10,6 +10,7 @@ RUN apt-get update              \
     && apt-get -y --no-install-recommends install \
         apache2-dev             \
         build-essential         \
+        locate                  \
         nano                    \
         unzip                   \
         vim                     \
@@ -21,6 +22,7 @@ RUN a2enmod rewrite
 # Install and configure GD lib
 RUN docker-php-ext-configure gd --with-jpeg-dir
 RUN docker-php-ext-install -j$(nproc) gd
+RUN docker-php-ext-install -j$(nproc) gettext
 
 # Copy files/directory into the docker image
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
