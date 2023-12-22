@@ -1,0 +1,16 @@
+#!/bin/bash
+
+version: '3.5'
+
+services:
+
+    #/================================================================/#
+    sendy:
+        container_name: sendy
+        image: fallguydev/sendy
+        restart: unless-stopped
+        ports:
+            - 80:80
+        volumes:
+            - ./volume-sendy/config.php/sendy:/var/www/html/includes/config.php
+            - ./volume-sendy/uploads:/var/www/html/uploads

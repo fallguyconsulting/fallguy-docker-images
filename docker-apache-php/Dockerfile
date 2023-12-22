@@ -5,7 +5,7 @@ FROM php:7.2-apache
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Get and install packages
-RUN apt-get update              \
+RUN apt-get update --allow-releaseinfo-change \
     && apt-get -y upgrade       \
     && apt-get -y --no-install-recommends install \
         apache2-dev             \
